@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoChat - Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <div class="landing-container">
+    <div class="stars-bg"></div>
+    <header class="landing-header">
+      <h1 id="app-title">CHRONOCHAT</h1>
+      <p id="app-tagline">The Time Travel Social Network</p>
+    </header>
+
+    <section class="landing-description">
+      <p>Journey through history and into the future. Connect with historical figures, engage in authentic conversations across time periods, and share your virtual time travel experiences with friends.</p>
+    </section>
+
+    <nav class="landing-nav">
+      <a href="index.html" class="landing-button primary" id="start-traveling-button">Start Time Traveling</a>
+      <a href="login.html" class="landing-button secondary" id="login-button">Log In</a>
+    </nav>
+
+    <section id="daily-mystery-capsule-section">
+      <div id="daily-mystery-box" aria-live="polite" tabindex="0" role="button" aria-label="Click to reveal today's mysterious time capsule message">
+        <div class="mystery-box-lid">
+            <span class="mystery-box-icon">🗝️</span>
+        </div>
+        <div class="mystery-box-front">
+            <p class="mystery-box-prompt">Today's Mysterious Time Capsule</p>
+        </div>
+        <div id="daily-capsule-message-content" class="daily-capsule-message" style="display: none;">
+          <!-- Content will be injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <div class="celestial-graphic">
+      <div class="ring ring-yellow"></div>
+      <div class="ring ring-blue"></div>
+      <div class="ring ring-purple"></div>
+      <div class="sun"></div>
+    </div>
+
+    <footer class="landing-footer">
+      <p>&copy; 2024 ChronoChat. Explore the corridors of time.</p>
+    </footer>
+  </div>
+  <script type="module" src="landing.js"></script>
+</body>
+</html>

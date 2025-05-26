@@ -1,0 +1,31 @@
+{
+  "name": "chronochat",
+  "version": "1.0.0",
+  "description": "ChronoChat - The Time Travel Social Network",
+  "main": "index.js",
+  "scripts": {
+    "// Local Development:": "",
+    "build-local": "tsc",
+    "watch-local": "tsc --watch",
+    "start-server": "npx http-server . -p 8080",
+    "start": "npm run build-local && npm run start-server",
+    "dev": "echo \"Run 'npm run watch-local' in one terminal and 'npm run start-server' in another for concurrent development.\"",
+    "// Production Build for 'dist' folder:": "",
+    "clean-dist": "rimraf dist",
+    "build-dist": "npm run clean-dist && mkdir dist && tsc --outDir dist && copyfiles -u 1 *.html *.css metadata.json dist && copyfiles -f dist/landing.js dist",
+    "//": "The deploy script below is an example; use Cloud Code UI or gcloud for actual deployment and API_KEY management.",
+    "deploy-example": "echo 'Remember to replace YOUR_ACTUAL_API_KEY_HERE with your real key if using this script, or better, set it as an environment variable in Cloud Run settings.' && npm run build && gcloud run deploy chronochat-app --source . --region us-west1 --allow-unauthenticated --set-env-vars API_KEY=YOUR_ACTUAL_API_KEY_HERE"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.1",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "@types/marked": "^5.0.0",
+    "@types/node": "^22.15.21",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^6.3.5"
+  }
+}

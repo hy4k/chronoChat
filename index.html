@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoChat - Main Application</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+        "marked": "https://esm.sh/marked@^15.0.7"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="stars-bg"></div>
+  <header class="app-header">
+    <div class="header-content">
+      <h1 id="main-app-title">ChronoChat</h1>
+      <p id="main-app-tagline">The Time Travel Social Network</p>
+    </div>
+    <button id="logout-button" class="chrono-button secondary">Logout</button>
+  </header>
+
+  <main>
+    <div id="mode-selection-container">
+      <h2 class="mode-selection-title">Choose Your ChronoChat Experience</h2>
+      <div class="mode-card" id="mode-learn-explore" data-mode="learn">
+        <div class="mode-card-icon">📚</div>
+        <h3>Learn & Explore</h3>
+        <p>Select a destination, your role, and an AI Guide/Persona to learn about an era through direct conversation.</p>
+        <button class="chrono-button primary mode-select-button">Begin Exploration</button>
+      </div>
+      <div class="mode-card" id="mode-direct-message" data-mode="dm">
+        <div class="mode-card-icon">💬</div>
+        <h3>Direct Message</h3>
+        <p>Choose a destination, your role, and connect one-on-one with a specific character from that time period.</p>
+        <button class="chrono-button primary mode-select-button">Start Direct Chat</button>
+      </div>
+      <div class="mode-card" id="mode-group-chatroom" data-mode="group">
+        <div class="mode-card-icon">👥</div>
+        <h3>Group Chatroom</h3>
+        <p>Pick a destination, your role, and join a shared chatroom with an Era Guide AI and other inhabitants.</p>
+        <button class="chrono-button primary mode-select-button">Enter Chatroom</button>
+      </div>
+    </div>
+
+    <div id="chat-interface-container" style="display: none;">
+      <button id="back-to-mode-select" class="chrono-button secondary small-button">&larr; Change Experience</button>
+      <div class="controls-container">
+        <div>
+          <label for="era-select">Choose Your Destination:</label>
+          <select id="era-select" aria-label="Select time period">
+            <option value="">Select a Time Period...</option>
+            <option value="ancient-egypt">Ancient Egypt (1350 BCE)</option>
+            <option value="renaissance-europe">Renaissance Europe (Florence, 1505 CE)</option>
+            <option value="moon-landing-1969">Moon Landing (July 20, 1969)</option>
+            <option value="cyberpunk-2077">Cyberpunk Neo-City (2077 CE)</option>
+            <option value="climate-summit-2050">Global Climate Summit (2050 CE)</option>
+          </select>
+        </div>
+        <div>
+          <label for="role-select">Choose Your Role:</label>
+          <select id="role-select" aria-label="Select your role in this era" disabled>
+            <option value="">-- Select an Era First --</option>
+          </select>
+        </div>
+        <div id="ai-persona-selector-container"> <!-- Container to hide/show based on mode -->
+          <label for="ai-persona-select">Chat with (AI Guide/Persona/Character):</label>
+          <select id="ai-persona-select" aria-label="Select AI persona or character to chat with" disabled>
+            <option value="">-- Select Era & Role First --</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="chatroom-details-container">
+        <div id="chatroom-info-bar" class="chatroom-info-bar">
+          <span id="current-chatroom-name">Chatroom: Not Selected</span>
+          <span id="current-user-role">Your Role: Not Selected</span>
+        </div>
+        <div class="participants-container">
+          <h3>Participants</h3>
+          <div id="participants-list" aria-label="List of chatroom participants">
+             <p class="system-message">Configure your session to see participants.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="chat-container" role="log" aria-live="polite">
+        <div id="chat-messages">
+          <p class="system-message">Initializing ChronoChat... Please configure your session to begin.</p>
+        </div>
+        <div id="loading-indicator" class="loading" style="display: none;" aria-label="Loading chat response">
+          <div class="spinner"></div>
+          Traveling through time...
+        </div>
+      </div>
+
+      <form id="chat-form">
+        <input type="text" id="chat-input" placeholder="Enter your message..." aria-label="Chat message input" disabled>
+        <button type="submit" id="send-button" class="chrono-button primary" disabled>Send</button>
+      </form>
+      <div class="snapshot-controls">
+          <button id="snapshot-button" class="chrono-button primary" aria-label="Take a virtual snapshot of the current scene" disabled>
+              📸 Take Snapshot
+          </button>
+          <span id="snapshot-loading-indicator" class="loading" style="display: none; margin-left: 10px;">
+              <div class="spinner spinner-small"></div> Generating...
+          </span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2024 ChronoChat</p>
+  </footer>
+
+  <div id="snapshot-modal" class="modal" style="display: none;" aria-labelledby="snapshot-modal-title" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <button id="snapshot-modal-close-button" class="modal-close-button" aria-label="Close snapshot view">&times;</button>
+      <h2 id="snapshot-modal-title">Virtual Snapshot</h2>
+      <div id="snapshot-image-container">
+        <img id="snapshot-image" src="#" alt="Generated virtual snapshot" />
+      </div>
+      <div class="modal-actions">
+        <button id="snapshot-share-button" class="chrono-button primary">Share (Copy Info)</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
