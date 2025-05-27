@@ -9,6 +9,7 @@
     "watch-local": "tsc --watch",
     "start-server": "npx http-server . -p 8080",
     "start": "npm run build-local && npm run start-server",
+    "dev:vite": "vite",
     "dev": "echo \"Run 'npm run watch-local' in one terminal and 'npm run start-server' in another for concurrent development.\"",
     "// Production Build for 'dist' folder:": "",
     "clean-dist": "rimraf dist",
@@ -18,7 +19,8 @@
   },
   "dependencies": {
     "@google/genai": "^1.0.1",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "marked": "^15.0.12"
   },
   "devDependencies": {
     "@types/marked": "^5.0.0",
